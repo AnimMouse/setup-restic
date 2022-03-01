@@ -1,0 +1,18 @@
+name: Setup Restic
+description: Setup/Install Restic for GitHub Actions
+branding:
+  icon: life-buoy
+  color: yellow
+  
+runs:
+  using: composite
+  steps:
+    - name: Download Restic for Linux
+      shell: bash
+      working-directory: ${{ runner.temp }}
+      run: $GITHUB_ACTION_PATH/scripts/Linux.sh
+      
+    - name: Install Restic on tool cache
+      uses: AnimMouse/tool-cache@v1
+      with:
+        folder_name: Restic

@@ -1,0 +1,17 @@
+name: Test setup-restic
+on:
+  push:
+    paths:
+      - action.yml
+      - scripts/**
+      - .github/workflows/test.yaml
+      
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Restic using setup-rclone
+        uses: AnimMouse/setup-restic@main
+        
+      - name: Test Restic by checking version
+        run: restic version
