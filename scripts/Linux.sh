@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 version=$(curl -s https://api.github.com/repos/restic/restic/releases/latest | jq -r '.tag_name')
 echo ::group::Downloading Restic $version for Linux
 aria2c -x 16 https://github.com/restic/restic/releases/download/$version/restic_${version/v}_linux_amd64.bz2
