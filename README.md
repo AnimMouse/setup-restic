@@ -10,6 +10,7 @@ With this action, you can now manipulate your restic repository on GitHub Action
 ## Usage
 To use `restic`, run this action before `restic`.
 
+### Use secrets for repository
 1. Paste restic repository to `RESTIC_REPOSITORY` secret.
 2. Paste restic repository password to `RESTIC_PASSWORD` secret.
 
@@ -21,6 +22,45 @@ steps:
   - run: restic check
     env:
       RESTIC_REPOSITORY: ${{ secrets.RESTIC_REPOSITORY }}
+      RESTIC_PASSWORD: ${{ secrets.RESTIC_PASSWORD }}
+```
+
+### Use workflow dispatch inputs for repository
+1. Add `restic-repository` workflow dispatch input on your workflow.
+2. Paste restic repository password to `RESTIC_PASSWORD` secret.
+
+```yaml
+on:
+  workflow_dispatch:
+    inputs:
+      restic-repository:
+        description: Restic repository
+        required: true
+        default: rest:http://host:8000
+```
+```
+steps:
+  - name: Setup Restic
+    uses: AnimMouse/setup-restic@v1
+    
+  - run: restic check
+    env:
+      RESTIC_REPOSITORY: ${{ github.event.inputs.restic-repository }}
+      RESTIC_PASSWORD: ${{ secrets.RESTIC_PASSWORD }}
+```
+
+### Use plain env input for repository
+1. Paste restic repository to `RESTIC_REPOSITORY:` environment variable.
+2. Paste restic repository password to `RESTIC_PASSWORD` secret.
+
+```
+steps:
+  - name: Setup Restic
+    uses: AnimMouse/setup-restic@v1
+    
+  - run: restic check
+    env:
+      RESTIC_REPOSITORY: rest:http://host:8000
       RESTIC_PASSWORD: ${{ secrets.RESTIC_PASSWORD }}
 ```
 
