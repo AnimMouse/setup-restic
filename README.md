@@ -5,7 +5,9 @@ This action installs [Restic](https://restic.net) for use in actions by installi
 
 This action is implemented as a [composite](https://docs.github.com/en/actions/creating-actions/creating-a-composite-action) action.
 
-With this action, you can now manipulate your restic repository on GitHub Actions.
+With this action, you can now manipulate your restic repository like check or prune on GitHub Actions.
+
+This action only supports Ubuntu virtual environments yet.
 
 ## Usage
 To use `restic`, run this action before `restic`.
@@ -38,7 +40,7 @@ on:
         required: true
         default: rest:http://host:8000
 ```
-```
+```yaml
 steps:
   - name: Setup Restic
     uses: AnimMouse/setup-restic@v1
@@ -53,7 +55,7 @@ steps:
 1. Paste restic repository to `RESTIC_REPOSITORY:` environment variable.
 2. Paste restic repository password to `RESTIC_PASSWORD` secret.
 
-```
+```yaml
 steps:
   - name: Setup Restic
     uses: AnimMouse/setup-restic@v1
