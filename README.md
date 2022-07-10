@@ -7,8 +7,6 @@ This action is implemented as a [composite](https://docs.github.com/en/actions/c
 
 With this action, you can now manipulate your restic repository like check or prune on GitHub Actions.
 
-This action only supports Ubuntu virtual environments yet.
-
 ## Usage
 To use `restic`, run this action before `restic`.
 

@@ -1,8 +1,8 @@
 #!/bin/bash
 set -eu
-version=$(curl -s https://api.github.com/repos/restic/restic/releases/latest | jq -r '.tag_name')
+version=$(curl -s $GITHUB_API_URL/repos/restic/restic/releases/latest | jq -r .tag_name)
 echo ::group::Downloading Restic $version for Linux
-aria2c -x 16 https://github.com/restic/restic/releases/download/$version/restic_${version/v}_linux_amd64.bz2
+aria2c -x 16 $GITHUB_SERVER_URL/restic/restic/releases/download/$version/restic_${version/v}_linux_amd64.bz2
 bzip2 -d restic_${version/v}_linux_amd64.bz2
 mkdir Restic
 mv restic_${version/v}_linux_amd64 Restic/restic

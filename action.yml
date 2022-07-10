@@ -8,9 +8,22 @@ runs:
   using: composite
   steps:
     - name: Download Restic for Linux
+      if: runner.os == 'Linux'
       shell: bash
       working-directory: ${{ runner.temp }}
       run: $GITHUB_ACTION_PATH/scripts/Linux.sh
+      
+    - name: Download Restic for Windows
+      if: runner.os == 'Windows'
+      shell: pwsh
+      working-directory: ${{ runner.temp }}
+      run: '& $env:GITHUB_ACTION_PATH\scripts\Windows.ps1'
+      
+    - name: Download Restic for macOS
+      if: runner.os == 'macOS'
+      shell: bash
+      working-directory: ${{ runner.temp }}
+      run: $GITHUB_ACTION_PATH/scripts/macOS.sh
       
     - name: Install Restic on tool cache
       uses: AnimMouse/tool-cache@v1
