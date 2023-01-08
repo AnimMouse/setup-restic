@@ -1,0 +1,9 @@
+#!/bin/bash
+set -eu
+if [ $version == latest ]
+then
+  latest_version=$(gh api repos/restic/restic/releases/latest -q .tag_name)
+  echo version=${latest_version/v} >> $GITHUB_OUTPUT
+else
+  echo version=$version >> $GITHUB_OUTPUT
+fi

@@ -13,10 +13,13 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
+        version: [latest, 0.13.1]
         
     steps:
-      - name: Setup Restic using setup-rclone
+      - name: Setup Restic using setup-restic
         uses: AnimMouse/setup-restic@main
-        
+        with:
+          version: ${{ matrix.version }}
+          
       - name: Test Restic by checking version
         run: restic version
