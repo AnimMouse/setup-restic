@@ -121,7 +121,7 @@ steps:
 ```
 
 ### Specific version
-You can specify the version you want.
+You can specify the version you want. By default, this action downloads the latest version.
 
 ```yaml
 steps:
@@ -131,7 +131,7 @@ steps:
       version: 0.14.0
 ```
 
-### GitHub Token
+### GitHub token
 This action automatically uses a GitHub token in order to authenticate with GitHub API and avoid rate limiting. You can also specify your own read-only fine-grained personal access token.
 
 ```yaml
