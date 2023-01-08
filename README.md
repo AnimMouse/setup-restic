@@ -5,7 +5,7 @@ This action installs [Restic](https://restic.net) for use in actions by installi
 
 This action is implemented as a [composite](https://docs.github.com/en/actions/creating-actions/creating-a-composite-action) action.
 
-With this action, you can now manipulate your restic repository like check or prune on GitHub Actions.
+With this action, you can now manipulate your Restic repository like check or prune on GitHub Actions.
 
 ## Usage
 To use `restic`, run this action before `restic`.
@@ -45,7 +45,7 @@ steps:
     
   - run: restic check
     env:
-      RESTIC_REPOSITORY: ${{ github.event.inputs.restic-repository }}
+      RESTIC_REPOSITORY: ${{ inputs.restic-repository }}
       RESTIC_PASSWORD: ${{ secrets.RESTIC_PASSWORD }}
 ```
 
@@ -99,7 +99,7 @@ steps:
       B2_ACCOUNT_KEY: ${{ secrets.B2_ACCOUNT_KEY }}
 ```
 
-For other environment variable based repositories, you can use another variables, just follow the S3 and B2 examples.
+For other environment variable based repositories, you can use other variables, just follow the S3 and B2 examples.
 
 ### Rclone
 You can use [AnimMouse/setup-rclone](https://github.com/AnimMouse/setup-rclone) in order to use Rclone on Restic.
@@ -118,4 +118,26 @@ steps:
     env:
       RESTIC_REPOSITORY: ${{ secrets.RESTIC_REPOSITORY }}
       RESTIC_PASSWORD: ${{ secrets.RESTIC_PASSWORD }}
+```
+
+### Specific version
+You can specify the version you want.
+
+```yaml
+steps:
+  - name: Setup Restic
+    uses: AnimMouse/setup-restic@v1
+    with:
+      version: 0.14.0
+```
+
+### GitHub Token
+This action automatically uses a GitHub token in order to authenticate with GitHub API and avoid rate limiting. You can also specify your own read-only fine-grained personal access token.
+
+```yaml
+steps:
+  - name: Setup Restic
+    uses: AnimMouse/setup-restic@v1
+    with:
+      token: ${{ secrets.GH_PAT }}
 ```
