@@ -11,8 +11,8 @@ With this action, you can now manipulate your Restic repository like check or pr
 To use `restic`, run this action before `restic`.
 
 ### Use secrets for repository
-1. Paste restic repository to `RESTIC_REPOSITORY` secret.
-2. Paste restic repository password to `RESTIC_PASSWORD` secret.
+1. Paste Restic repository to `RESTIC_REPOSITORY` secret.
+2. Paste Restic repository password to `RESTIC_PASSWORD` secret.
 
 ```yaml
 steps:
@@ -27,7 +27,7 @@ steps:
 
 ### Use workflow dispatch inputs for repository
 1. Add `restic-repository` workflow dispatch input on your workflow.
-2. Paste restic repository password to `RESTIC_PASSWORD` secret.
+2. Paste Restic repository password to `RESTIC_PASSWORD` secret.
 
 ```yaml
 on:
@@ -50,8 +50,8 @@ steps:
 ```
 
 ### Use plain env input for repository
-1. Paste restic repository to `RESTIC_REPOSITORY:` environment variable.
-2. Paste restic repository password to `RESTIC_PASSWORD` secret.
+1. Paste Restic repository to `RESTIC_REPOSITORY:` environment variable.
+2. Paste Restic repository password to `RESTIC_PASSWORD` secret.
 
 ```yaml
 steps:
@@ -121,7 +121,7 @@ steps:
 ```
 
 ### Specific version
-You can specify the version you want. By default, this action downloads the latest version.
+You can specify the version you want. By default, this action downloads the latest version if version is not specified.
 
 ```yaml
 steps:
